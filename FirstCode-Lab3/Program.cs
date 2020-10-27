@@ -19,10 +19,8 @@ namespace FirstCode_Lab3
             //Вывод приглашения пользователю
             Console.Write(Str);
 
-            //Получение строки
             string tmpString = Console.ReadLine();
 
-            //Преобразование строки в число
             int tmpArg = Convert.ToInt32(tmpString);
 
             return tmpArg;
@@ -64,9 +62,11 @@ namespace FirstCode_Lab3
                 Console.WriteLine("MAX = " + max);
 
             }
-            catch (SystemException)
+            catch (SystemException ex)
             {
                 Console.WriteLine("Произошла ошибка, вероятно, были введены некорректные данные!");
+                Console.WriteLine("Причина ошибки: " + ex.Message);
+                Console.ReadKey();
             }
         }
     }
