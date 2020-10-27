@@ -17,7 +17,7 @@ namespace FirstCode_Lab3
         static int GetNumber(string Str)
         {
             //Вывод приглашения пользователю
-            Console.Write(Str);
+            Console.Write("Введите число " + Str + ":");
 
             string tmpString = Console.ReadLine();
 
@@ -32,42 +32,27 @@ namespace FirstCode_Lab3
 
             try
             {
-
-                a = GetNumber("Введите число а:");
-                b = GetNumber("Введите число b:");
-                c = GetNumber("Введите число c:");
+                a = GetNumber("а");
+                b = GetNumber("b");
+                c = GetNumber("c");
 
                 if (a > b)
                 {
-                    if(a > c)
-                    {
-                        max = a;
-                    }
-                else
-                {
-                    max = c;
-                }
+                    max = (a > c) ? a : c;
                 }
                 else
                 {
-                    if(b > c)
-                    {
-                        max = b;
-                    }
-                    else
-                    {
-                        max = c;
-                    }
-            }
+                    max = (b > c) ? b : c;
+                }
                 Console.WriteLine("MAX = " + max);
-
             }
             catch (SystemException ex)
             {
                 Console.WriteLine("Произошла ошибка, вероятно, были введены некорректные данные!");
                 Console.WriteLine("Причина ошибки: " + ex.Message);
-                Console.ReadKey();
             }
+            Console.ReadKey();
         }
+
     }
 }
