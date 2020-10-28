@@ -14,45 +14,44 @@ namespace FirstCode_Lab3
     * с клавиатуры строку, преобразует её в целое число и
     * возвращает это число
     */
-        static int GetNumber(string Str)
+        static int GetNumber(string str)
         {
-            //Вывод приглашения пользователю
-            Console.Write("Введите число " + Str + ":");
+            Console.Write("Введите число " + str + ":");
 
             string tmpString = Console.ReadLine();
-
-            int tmpArg = Convert.ToInt32(tmpString);
-
-            return tmpArg;
+            int exit = 0;
+            int tmpArg;
+            
+            if(int.TryParse(tmpString, out tmpArg))
+            {
+                return tmpArg;
+            }
+            else
+            {
+                Console.WriteLine("Введено не корректное значение. Значение по умотчанию " + exit + ".");
+                return exit;
+            }            
         }
-
+        
         static void Main(string[] args)
         {
             int a, b, c, max;
 
-            try
-            {
-                a = GetNumber("а");
-                b = GetNumber("b");
-                c = GetNumber("c");
+            a = GetNumber("а");
+            b = GetNumber("b");
+            c = GetNumber("c");
 
-                if (a > b)
-                {
-                    max = (a > c) ? a : c;
-                }
-                else
-                {
-                    max = (b > c) ? b : c;
-                }
-                Console.WriteLine("MAX = " + max);
-            }
-            catch (SystemException ex)
+            if (a > b)
             {
-                Console.WriteLine("Произошла ошибка, вероятно, были введены некорректные данные!");
-                Console.WriteLine("Причина ошибки: " + ex.Message);
+                max = (a > c) ? a : c;
             }
+            else
+            {
+                max = (b > c) ? b : c;
+            }
+            Console.WriteLine("MAX = " + max);
+
             Console.ReadKey();
         }
-
     }
 }
