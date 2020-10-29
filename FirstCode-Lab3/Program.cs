@@ -18,19 +18,17 @@ namespace FirstCode_Lab3
         {
             Console.Write("Введите число " + str + ":");
 
-            string tmpString = Console.ReadLine();
-            int exit = 0;
-            int tmpArg;
-            
-            if(int.TryParse(tmpString, out tmpArg))
+            int tmpString;
+            bool exit; 
+            do
             {
-                return tmpArg;
+                exit = int.TryParse(Console.ReadLine(), out tmpString);
+                if (exit == false) 
+                    Console.WriteLine("Не корректное значение! Повторите ввод числа " + str + ":");
             }
-            else
-            {
-                Console.WriteLine("Введено не корректное значение. Значение по умотчанию " + exit + ".");
-                return exit;
-            }            
+            while (exit == false); 
+
+            return tmpString;    
         }
         
         static void Main(string[] args)
